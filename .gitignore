@@ -1,0 +1,4 @@
+# Original list of files to ignore under GIT
+*.suo
+*.exe
+*.pdb
