@@ -1,4 +1,14 @@
-# Original list of files to ignore under GIT
+# List of files to ignore under GIT
+# http://stackoverflow.com/questions/1470572/gitignore-ignore-any-bin-directory
+#  - now git will ignore any bin directory.
+# Also make sure that none of them are already tracked by git.
+# eg: if an exe is already in git commit, even if you modify this file now, and add an 
+# exe file, git will track the .exe file.
 *.suo
 *.exe
 *.pdb
+*.config
+build/
+bin/
+obj/
+Properties/
