@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+// ReSharper disable All
 
 namespace RestCallSample
 {
@@ -15,22 +16,40 @@ namespace RestCallSample
     {
         public static void Main(string[] args)
         {
-            //simpleRestCallSync();
-            simpleRestCallASync();
+            //SimpleRestCallSync();
+            //SimpleRestCallASync();
             //ThreadingTest.testThreading();
+           TestSimpleTask();
         }
 
-        private static void simpleRestCallASync()
+        private static void TestSimpleTask()
+        {
+            Task t = Task.Run(() => {
+                Console.WriteLine("Sleeping for 3 sec");
+                Thread.Sleep(3000);
+                Console.WriteLine("Wake up from sleep of 3 sec");
+            });
+
+            /*To wait for a single task to complete, you can call its Task.Wait method. A call to 
+            the Wait method blocks the calling thread until the single class instance has completed
+            execution.*/
+            Console.WriteLine("calling task.wait");
+            t.Wait();
+            Console.WriteLine("task done");
+            Console.ReadLine();
+        }
+
+        private static void SimpleRestCallASync()
         {
             Console.WriteLine("Starting network async call");
-            ThreadStart ts = new ThreadStart(simpleRestCallSync);
+            ThreadStart ts = new ThreadStart(SimpleRestCallSync);
             Thread t = new Thread(ts);
             t.Start();
             Console.WriteLine("End of async call");
         }
         
         // This is a synchronous rest call
-        private static void simpleRestCallSync()
+        private static void SimpleRestCallSync()
         {
             string url = "http://stackoverflow.com/questions/27108264/c-sharp-how-to-properly-make-a-http-web-get-request";
 
