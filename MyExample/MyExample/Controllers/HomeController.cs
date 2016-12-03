@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+// http://myexample20161202071101.azurewebsites.net/ this is the link
+
 namespace MyExample.Controllers
 {
     public class HomeController : Controller
