@@ -41,7 +41,8 @@ namespace AzureTableStorageSample
 
            // doBatchOperation(table);
 
-            queryAPartition(table);
+           // queryAPartition(table);
+           getAllEntitiesFromTable(table);
 
           //  doConditionalQuery(table);
             Console.Read();
@@ -74,6 +75,15 @@ namespace AzureTableStorageSample
             {
                 Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
                     entity.Email, entity.PhoneNumber);
+            }
+        }
+
+        private static void getAllEntitiesFromTable(CloudTable table)
+        {
+            TableQuery query = new TableQuery();
+            foreach(DynamicTableEntity entity in table.ExecuteQuery(query))
+            {
+                Console.WriteLine("{0}, {1}", entity.PartitionKey, entity.RowKey);
             }
         }
 
