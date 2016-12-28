@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure; // Namespace for CloudConfigurationManager
-using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Queue;
+// Namespace for CloudStorageAccount
 using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 
 // https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-tables
@@ -46,6 +48,35 @@ namespace AzureTableStorageSample
 
           //  doConditionalQuery(table);
             Console.Read();
+        }
+
+        private void deleteAllQueues()
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+            for (int i = 0; i < 20; i++)
+            {
+                string s = "provisioning-operationsamaga";
+
+                if (i <= 9)
+                {
+                    s += "0" + i;
+                }
+                else
+                {
+                    s += i;
+                }
+                CloudQueue queue = queueClient.GetQueueReference(s);
+
+                // Fetch the queue attributes.
+                queue.FetchAttributes();
+
+                // Retrieve the cached approximate message count.
+                int? cachedMessageCount = queue.ApproximateMessageCount;
+                queue.Delete();
+            }
         }
 
         private static void doConditionalQuery(CloudTable table)
