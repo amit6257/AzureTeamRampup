@@ -8,11 +8,13 @@ namespace LearnCsharp
     {
         static void Main(string[] args)
         {
-            learnDelegate();
+            /*learnDelegate();
             addDelegates();
             
             anonymousDelegate();
-            delegateWithReturnType();
+            delegateWithReturnType();*/
+
+            LearnTask.testTask();
             Console.Write("Exiting main method");
             Console.Read();
         }
