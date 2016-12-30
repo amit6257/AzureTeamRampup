@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 // https://www.dotnetperls.com/lambda
@@ -11,7 +12,10 @@ namespace LearnCsharp
     {
         public static void testTask()
         {
-            testFunc();
+            // testFunc();
+          //  awaitonATask();
+            WaitOnATask();
+            Console.WriteLine("exiting test");
             Console.Read();
         }
 
@@ -71,6 +75,33 @@ namespace LearnCsharp
         private static void print(int e)
         {
             Console.WriteLine(e);
+        }
+
+        private static async void awaitonATask()
+        {
+            Console.WriteLine("entering async");
+            await methodAwait();
+            Console.WriteLine("exiting async");
+        }
+
+        private static void WaitOnATask()
+        {
+            Console.WriteLine("entering WaitOnATask");
+            Task t = methodAwait();
+            t.Wait();
+            Console.WriteLine("exiting WaitOnATask");
+        }
+
+        private static Task methodAwait()
+        {
+            Task t = new Task(mySleep);
+            t.Start();
+            return t;
+        }
+
+        private static void mySleep()
+        {
+            Thread.Sleep(2000);
         }
 
         /*private static void test1()
