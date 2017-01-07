@@ -45,9 +45,34 @@ namespace AzureTableStorageSample
 
            // queryAPartition(table);
            getAllEntitiesFromTable(table);
-
+//            deleteAllTableEntries(table);
           //  doConditionalQuery(table);
+          UpdateCustomerEntity(customer, table);
             Console.Read();
+        }
+
+        private static void UpdateCustomerEntity(CustomerEntity customer, CloudTable table)
+        {
+            // Create a retrieve operation that takes a customer entity.
+            TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>
+                (customer.PartitionKey, customer.RowKey);
+
+            TableResult result = table.Execute(retrieveOperation);
+
+            CustomerEntity updatedCustomerEntity = (CustomerEntity) result.Result;
+            updatedCustomerEntity.PhoneNumber = "aksjd";
+            TableOperation updateOperation = TableOperation.Replace(updatedCustomerEntity);
+            table.Execute(updateOperation);
+        }
+
+        private static void DeleteAllTableEntries(CloudTable table)
+        {
+            TableQuery query = new TableQuery();
+            foreach (DynamicTableEntity entity in table.ExecuteQuery(query))
+            {
+                TableOperation deleteOperation = TableOperation.Delete(entity);
+                table.Execute(deleteOperation);
+            }
         }
 
         private void deleteAllQueues()
