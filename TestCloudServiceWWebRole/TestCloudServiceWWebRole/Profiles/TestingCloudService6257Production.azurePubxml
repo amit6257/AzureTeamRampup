@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AzureCredentials>{"ServiceManagementEndpoint":"https:\/\/management.core.windows.net\/","ResourceManagementEndpoint":"https:\/\/management.azure.com\/","SubscriptionId":"c445e683-26aa-4df7-84da-fd2ba8a502e3"}</AzureCredentials>
+    <AzureDeleteDeploymentOnFailure>False</AzureDeleteDeploymentOnFailure>
+    <AzureDeploymentLabel>TestCloudServiceWWebRole</AzureDeploymentLabel>
+    <AzureDeploymentReplacementMethod>AutomaticUpgrade</AzureDeploymentReplacementMethod>
+    <AzureSlot>Production</AzureSlot>
+    <AzureEnableRemoteDesktop>True</AzureEnableRemoteDesktop>
+    <AzureEnableWebDeploy>False</AzureEnableWebDeploy>
+    <AzureFallbackToDeleteAndRecreateIfUpgradeFails>False</AzureFallbackToDeleteAndRecreateIfUpgradeFails>
+    <AzureHostedServiceLabel>TestingCloudService6257</AzureHostedServiceLabel>
+    <AzureHostedServiceName>TestingCloudService6257</AzureHostedServiceName>
+    <AzureHostedServiceResourceGroup>cloudservicerg</AzureHostedServiceResourceGroup>
+    <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
+    <AzureEnableProfiling>False</AzureEnableProfiling>
+    <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
+    <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
+    <AzureStorageAccountLabel>testcs65sda3</AzureStorageAccountLabel>
+    <AzureStorageAccountName>testcs65sda3</AzureStorageAccountName>
+    <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
+  </PropertyGroup>
+</Project>
