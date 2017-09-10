@@ -10,15 +10,29 @@ namespace MyAspnetWebApp.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        //public IEnumerable<string> Get1()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            return "get method";
         }
 
         // GET api/values/5
-        public string Get(int id)
+        //public string Get(int id)
+        //{
+        //    return "value passed = " + id;
+        //}
+
+        public object Get(int id)
         {
-            return "value passed = " + id;
+            return new
+            {
+                id = id,
+                str = "yo"
+            };
         }
 
         // POST api/values
