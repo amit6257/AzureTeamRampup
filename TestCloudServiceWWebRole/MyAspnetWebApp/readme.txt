@@ -5,3 +5,5 @@ response is
     "value1",
     "value2"
 ]
+3. get with a parameter: http://localhost:2820/api/values/12, response: "value passed = 12"
+4. 

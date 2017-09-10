@@ -18,7 +18,7 @@ namespace MyAspnetWebApp.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            return "value passed = " + id;
         }
 
         // POST api/values
