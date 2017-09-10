@@ -9,9 +9,14 @@ namespace MyAspnetWebApp.Controllers
 {
     public class TestController : ApiController
     {
-        public string Get()
+        //public string Get()
+        //{
+        //    return "TestController Get() method";
+        //}
+
+        public HttpResponseMessage Get()
         {
-            return "TestController Get() method";
+            return Request.CreateResponse(HttpStatusCode.OK, "TestController Get() method with HttpResponseMessage as return type");
         }
     }
 }
