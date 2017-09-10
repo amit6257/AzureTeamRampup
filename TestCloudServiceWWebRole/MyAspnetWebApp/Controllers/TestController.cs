@@ -14,8 +14,15 @@ namespace MyAspnetWebApp.Controllers
         //    return "TestController Get() method";
         //}
 
+        //public HttpResponseMessage Get()
+        //{
+        //    return Request.CreateResponse(HttpStatusCode.OK, "TestController Get() method with HttpResponseMessage as return type");
+        //}
+
+        [Authorize]
         public HttpResponseMessage Get()
         {
+            // returns this message: "Message": "Authorization has been denied for this request."
             return Request.CreateResponse(HttpStatusCode.OK, "TestController Get() method with HttpResponseMessage as return type");
         }
     }
